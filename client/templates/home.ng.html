@@ -1,0 +1,26 @@
+<div class="my-home-background" layout-fill layout="row">
+  <md-sidenav class="md-sidenav-left" md-component-id="left">
+    <md-toolbar class="md-theme-indigo">
+      <h1 class="md-toolbar-tools">Sidenav Left</h1>
+    </md-toolbar>
+    <ul>
+      <li>
+        <a href="home">Home</a>
+      </li>
+      <hr>
+      <!-- customize later for personal break line in menu items -->
+      <li>
+        <a href="logout">Logout</a>
+      </li>
+    </ul>
+  </md-sidenav>
+  <md-button class="md-primary md-hue-1" ng-click="openLeftMenu()">
+    <span class="my-menu-text">MENU</span>
+  </md-button>
+
+  <span class="my-white-text">
+    Welcome,
+    {{test}}
+  </span>
+
+</div>

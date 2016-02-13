@@ -1,0 +1,47 @@
+<div class="my-login-background" layout-align="center center" layout-padding layout="column">
+  <md-content style="border-radius:5px;opactiy:0.9">
+      <form ng-submit="submit()">
+        <div  style="text-align:center">
+          <p>
+            <h4>
+              <em style="color:#e86100">myFinance Login</em>
+            </h4>
+          </p>
+          <p ng-if="registerForm">
+            <span style="color:#800080">(Registration)</span>
+          </p>
+        </div>
+        <md-input-container class="md-block" flex-gt-sm ng-if="registerForm">
+          <label>Email</label>
+          <input ng-model="user.email" ng-required="true" type="email">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Username</label>
+          <input ng-model="user.username" type="text">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Password</label>
+          <input ng-model="user.password" type="password">
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm ng-if="registerForm">
+          <label>Confirm Password</label>
+          <input ng-model="user.passwordConfirm" ng-required="true" type="password">
+        </md-input-container>
+
+        <section layout-align="center center" layout-sm="column" layout-wrap layout="row">
+          <div class="col-lg-10 col-lg-offset-2">
+            <md-button class="btn" ng-click="showRegistration()" ng-show="loginForm" style="margin-left:5px" type="reset">Register
+            </md-button>
+            <md-button class="btn" ng-click="showLogin()" ng-show="registerForm" style="margin-left:5px" type="reset">Cancel
+            </md-button>
+            <md-button class="btn" ng-click="createUser(user)" ng-show="registerForm" style="margin-left:5px" type="button">
+              Submit
+            </md-button>
+            <md-button class="btn" ng-show="loginForm" type="submit">
+              Login
+            </md-button>
+          </div>
+        </section>
+      </form>
+  </md-content>
+</div>

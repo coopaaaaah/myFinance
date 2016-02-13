@@ -1,0 +1,43 @@
+/* start color pallet */
+
+.my-color-pallet {
+
+  color1: #4C4D52;
+  color3: #2f4f4f;
+  color2: #800080;
+  color4: #e86100;
+  color5: #ff0800;
+  color6: #318bff;
+  color7: #ea4c89;
+  color8: #ffffff;
+
+}
+
+/* end color pallet */
+
+/* start background section */
+.my-login-background {
+    background: url(images/login-background-3.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height:inherit;
+    padding-bottom: 40px;
+}
+
+.my-home-background {
+  background-color:#4C4D52;
+}
+
+/* end background section */
+
+
+/* start text section */
+.my-white-text {
+  color:white;
+}
+
+.my-menu-text {
+  font-size: 250%;
+  color: #ffffff;
+}
+
+/* end text section */
