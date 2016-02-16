@@ -1,5 +1,6 @@
 angular.module('myFinance').controller('loginCtrl', function ($scope, $state) {
 
+    Meteor.subscribe('allUsers');
 
     // Declaring variables for UI Rendering
     $scope.loginForm = true; // boolean for login form
@@ -29,7 +30,6 @@ angular.module('myFinance').controller('loginCtrl', function ($scope, $state) {
             console.log("passwords do not match"); //prompt the user
         } else {
             Accounts.createUser({ // adds a user object to the Accounts.Users with create
-                email: user.email, // pulls from ng model for users email
                 password: user.password, // pulls from ng model for users password
                 username: user.username // pulls from ng model for users username
             }, function (error) { // if the callback experiences and error
@@ -44,8 +44,15 @@ angular.module('myFinance').controller('loginCtrl', function ($scope, $state) {
         }
     };
 
-    $scope.submit = function () {
-        $state.go('home');
+    $scope.loginUser = function (user) {
+      Meteor.loginWithPassword(user.username, user.password, function(err){
+        if (err){
+          console.log('error -', err);
+        }
+        else{
+          state.go('home');
+        }
+      });
     };
 
     // *************************

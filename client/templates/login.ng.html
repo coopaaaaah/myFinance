@@ -11,10 +11,6 @@
             <span style="color:#800080">(Registration)</span>
           </p>
         </div>
-        <md-input-container class="md-block" flex-gt-sm ng-if="registerForm">
-          <label>Email</label>
-          <input ng-model="user.email" ng-required="true" type="email">
-        </md-input-container>
         <md-input-container class="md-block" flex-gt-sm>
           <label>Username</label>
           <input ng-model="user.username" type="text">
@@ -37,7 +33,7 @@
             <md-button class="btn" ng-click="createUser(user)" ng-show="registerForm" style="margin-left:5px" type="button">
               Submit
             </md-button>
-            <md-button class="btn" ng-show="loginForm" type="submit">
+            <md-button class="btn" ng-click="loginUser(user)" ng-show="loginForm" type="submit">
               Login
             </md-button>
           </div>
