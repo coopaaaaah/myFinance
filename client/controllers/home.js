@@ -1,6 +1,6 @@
 angular.module('myFinance').controller('homeCtrl', function($scope, $mdSidenav) {
-  
-  $scope.test = "Test User";
+
+  $scope.loggedUser = Meteor.user().username;
 
   // *************************
   // START--Helper Functions Block

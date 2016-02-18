@@ -1,62 +1,69 @@
-angular.module('myFinance').controller('loginCtrl', function ($scope, $state) {
+angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$state', '$mdToast', function($meteor, $scope, $state, $mdToast) {
 
-    Meteor.subscribe('allUsers');
+  var vm = this;
 
-    // Declaring variables for UI Rendering
-    $scope.loginForm = true; // boolean for login form
-    $scope.registerForm = false; // boolean for register form
+  vm.userCredentials = {
+    username: '',
+    password: ''
+  };
 
-    // This function will set the booleans so that the registration
-    // form information is shown in login-ng.html
-    $scope.showRegistration = function () {
-        $scope.loginForm = false;
-        $scope.registerForm = true;
-    };
+  vm.error = '';
 
-    // This function will set the booleans so that the login
-    // form information is shown in login-ng.html
-    $scope.showLogin = function () {
-        $scope.loginForm = true;
-        $scope.registerForm = false;
-    };
+  vm.login = function () {
+    $meteor.loginWithPassword(vm.userCredentials.username, vm.userCredentials.password).then(
+      function() {
+        $state.go('home');
+      },
+      function(err) {
+        vm.error = 'Login error - ' + err;
+      }
+    );
+  };
 
-    //user empty object to a void undefined
-    //$scope.user = {};
+  // Declaring variables for UI Rendering
+  $scope.loginForm = true; // boolean for login form
+  $scope.registerForm = false; // boolean for register form
 
-    // This funtion will create a user by the following steps
-    // 1) Confirms that the password and confirmed passwords are identical
-    $scope.createUser = function (user) {
-        if (user.passwordConfirm !== user.password) { // they do not match
-            console.log("passwords do not match"); //prompt the user
-        } else {
-            Accounts.createUser({ // adds a user object to the Accounts.Users with create
-                password: user.password, // pulls from ng model for users password
-                username: user.username // pulls from ng model for users username
-            }, function (error) { // if the callback experiences and error
-                if (error) {
-                    console.log("Error Adding user to Meteor Account");
-                    console.log(error);
-                } else { // if there is no error an email will be sent to the user
-                    console.log("Added user to Meteor Account");
-                    $state.go('home'); // immediate redirect for the user after successfully registering or are we waiting for email verification ?
-                }
-            });
-        }
-    };
+  // This function will set the booleans so that the registration
+  // form information is shown in login-ng.html
+  $scope.showRegistration = function() {
+    $scope.loginForm = false;
+    $scope.registerForm = true;
+  };
 
-    $scope.loginUser = function (user) {
-      Meteor.loginWithPassword(user.username, user.password, function(err){
-        if (err){
-          console.log('error -', err);
-        }
-        else{
-          state.go('home');
+  // This function will set the booleans so that the login
+  // form information is shown in login-ng.html
+  $scope.showLogin = function() {
+    $scope.loginForm = true;
+    $scope.registerForm = false;
+  };
+
+  //user empty object to a void undefined
+  //$scope.user = {};
+
+  // This funtion will create a user by the following steps
+  // 1) Confirms that the password and confirmed passwords are identical
+  $scope.createUser = function(user) {
+    if (user.passwordConfirm !== user.password) { // they do not match
+      console.log("passwords do not match"); //prompt the user
+    } else {
+      Accounts.createUser({ // adds a user object to the Accounts.Users with create
+        password: userCredentials.password, // pulls from ng model for users password
+        username: userCredentials.username // pulls from ng model for users username
+      }, function(error) { // if the callback experiences and error
+        if (error) {
+          console.log("Error Adding user to Meteor Account");
+          console.log(error);
+        } else { // if there is no error an email will be sent to the user
+          console.log("Added user to Meteor Account");
+          $state.go('home'); // immediate redirect for the user after successfully registering or are we waiting for email verification ?
         }
       });
-    };
+    }
+  };
+  
+  // *************************
+  // END--Helper Functions Block
+  // *************************
 
-    // *************************
-    // END--Helper Functions Block
-    // *************************
-
-});
+}]);
