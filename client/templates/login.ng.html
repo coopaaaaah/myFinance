@@ -1,6 +1,6 @@
 <div class="my-login-background" layout-align="center center" layout-padding layout="column">
   <md-content style="border-radius:5px;opactiy:0.9">
-    <form layout="column">
+    <form layout="column" flex>
       <div style="text-align:center">
         <p>
           <h4>
@@ -11,17 +11,17 @@
           <span style="color:#800080">(Registration)</span>
         </p>
       </div>
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Username</label>
         <input ng-model="lc.userCredentials.username" type="text">
       </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Password</label>
         <input ng-model="lc.userCredentials.password" type="password">
       </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm ng-if="registerForm">
+      <md-input-container class="md-block" ng-if="registerForm">
         <label>Confirm Password</label>
-        <input ng-model="user.passwordConfirm" ng-required="true" type="password">
+        <input ng-model="lc.userCredentials.passwordConfirm" ng-required="true" type="password">
       </md-input-container>
 
       <section layout-align="center center" layout-sm="column" layout-wrap layout="row">
@@ -30,7 +30,7 @@
           </md-button>
           <md-button class="btn" ng-click="showLogin()" ng-show="registerForm" style="margin-left:5px" type="reset">Cancel
           </md-button>
-          <md-button class="btn" ng-click="createUser(user)" ng-show="registerForm" style="margin-left:5px" type="button">
+          <md-button class="btn" ng-click="lc.createUser()" ng-show="registerForm" style="margin-left:5px" type="button">
             Submit
           </md-button>
           <md-button class="btn" ng-click="lc.login()" ng-show="loginForm" type="submit">

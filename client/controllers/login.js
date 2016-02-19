@@ -4,7 +4,8 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
 
   vm.userCredentials = {
     username: '',
-    password: ''
+    password: '',
+    passwordConfirm: ''
   };
 
   vm.error = '';
@@ -38,18 +39,15 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
     $scope.registerForm = false;
   };
 
-  //user empty object to a void undefined
-  //$scope.user = {};
-
   // This funtion will create a user by the following steps
   // 1) Confirms that the password and confirmed passwords are identical
-  $scope.createUser = function(user) {
-    if (user.passwordConfirm !== user.password) { // they do not match
+  vm.createUser = function() {
+    if (vm.userCredentials.passwordConfirm !== vm.userCredentials.password) { // they do not match
       console.log("passwords do not match"); //prompt the user
     } else {
       Accounts.createUser({ // adds a user object to the Accounts.Users with create
-        password: userCredentials.password, // pulls from ng model for users password
-        username: userCredentials.username // pulls from ng model for users username
+        password: vm.userCredentials.passwordConfirm, // pulls from ng model for users password
+        username: vm.userCredentials.username // pulls from ng model for users username
       }, function(error) { // if the callback experiences and error
         if (error) {
           console.log("Error Adding user to Meteor Account");
@@ -61,7 +59,7 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
       });
     }
   };
-  
+
   // *************************
   // END--Helper Functions Block
   // *************************
