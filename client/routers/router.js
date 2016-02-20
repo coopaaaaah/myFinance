@@ -2,9 +2,9 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
 
   $locationProvider.html5Mode(true);
 
-  // this is the login page route
   $stateProvider
 
+    // this is the login page route
     .state('login', {
     url: '/login',
     templateUrl: 'client/templates/login.ng.html',
@@ -14,9 +14,10 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
 
   // this is the home page route
   .state('home', {
-    url: '/home/:userId',
+    url: '/home',
     templateUrl: 'client/templates/home.ng.html',
     controller: 'homeCtrl',
+    controllerAs: 'hc',
     resolve: {
       currentUser: ($q) => {
         if (Meteor.userId() === null) {
@@ -31,8 +32,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
   // 404 redirect
   .state('404', {
     url: '/404',
-    templateUrl: 'client/templates/404.ng.html',
-    controller: 'homeCtrl'
+    templateUrl: 'client/templates/404.ng.html'
   })
 
   .state('logout', {

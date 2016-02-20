@@ -1,21 +1,15 @@
-/* start color pallet */
+/*custom css file */
 
 .my-color-pallet {
 
-  color1: #4C4D52;
-  color3: #2f4f4f;
-  color2: #800080;
-  color4: #e86100;
-  color5: #ff0800;
-  color6: #318bff;
-  color7: #ea4c89;
-  color8: #ffffff;
+  color1: #818285;
+  color2: #e86100;
+  color3: #0091EA;
+  color4: #ffffff;
+  color5: #000000;
 
 }
 
-/* end color pallet */
-
-/* start background section */
 .my-login-background {
     background: url(images/login-background-3.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -24,20 +18,14 @@
 }
 
 .my-home-background {
-  background-color:#4C4D52;
+  background-color:#006064;
 }
 
-/* end background section */
-
-
-/* start text section */
 .my-white-text {
-  color:white;
+  color: #ffffff;
 }
-
 .my-menu-text {
   font-size: 250%;
   color: #ffffff;
+  background-color: #4C4D52;
 }
-
-/* end text section */
