@@ -10,12 +10,14 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
 
   vm.error = '';
 
-  vm.login = function () {
+  vm.login = function() {
     $meteor.loginWithPassword(vm.userCredentials.username, vm.userCredentials.password).then(
       function() {
+        successfulLoginToast();
         $state.go('home');
       },
       function(err) {
+        failedLoginToast();
         vm.error = 'Login error - ' + err;
       }
     );
@@ -64,4 +66,51 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
   // END--Helper Functions Block
   // *************************
 
+
+  // Toast Functionality
+
+  var last = {
+    bottom: false,
+    top: true,
+    left: false,
+    right: true
+  };
+
+  var toastPosition = angular.extend({}, last);
+
+  getToastPosition = function() {
+    sanitizePosition();
+    return Object.keys(toastPosition)
+      .filter(function(pos) {
+        return toastPosition[pos];
+      })
+      .join(' ');
+  };
+
+  function sanitizePosition() {
+    var current = toastPosition;
+    if (current.bottom && last.top) current.top = false;
+    if (current.top && last.bottom) current.bottom = false;
+    if (current.right && last.left) current.left = false;
+    if (current.left && last.right) current.right = false;
+    last = angular.extend({}, current);
+  }
+
+  failedLoginToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent('Login Failed.')
+      .position(getToastPosition())
+      .hideDelay(3000)
+    );
+  };
+
+  successfulLoginToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent('Login Successful. Welcome, ' + vm.userCredentials.username)
+      .position(getToastPosition())
+      .hideDelay(3000)
+    );
+  };
 }]);

@@ -10,9 +10,6 @@ angular.module('myFinance').controller('homeCtrl', function($scope, $state, $mdS
     $state.go('logout');
   };
 
-  // logic to store user that is currently logged in
-  $scope.user = Meteor.user() ? Meteor.user().username : 'friend!';
-
   // *************************
   // START--Helper Functions Block
   // *************************
