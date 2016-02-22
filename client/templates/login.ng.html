@@ -1,4 +1,4 @@
-<div class="my-login-background" layout-align="center center" layout-padding layout="column">
+<div class="my-login-background" layout-align="center center" layout-padding layout="row">
   <md-content style="border-radius:5px;opactiy:0.9">
     <form layout="column" flex>
       <div style="text-align:center">
@@ -11,15 +11,15 @@
           <span style="color:#800080">(Registration)</span>
         </p>
       </div>
-      <md-input-container class="md-block">
+      <md-input-container class="md-block" flex>
         <label>Username</label>
         <input ng-model="lc.userCredentials.username" type="text">
       </md-input-container>
-      <md-input-container class="md-block">
+      <md-input-container class="md-block" flex>
         <label>Password</label>
         <input ng-model="lc.userCredentials.password" type="password">
       </md-input-container>
-      <md-input-container class="md-block" ng-if="registerForm">
+      <md-input-container class="md-block" ng-if="registerForm" flex>
         <label>Confirm Password</label>
         <input ng-model="lc.userCredentials.passwordConfirm" ng-required="true" type="password">
       </md-input-container>

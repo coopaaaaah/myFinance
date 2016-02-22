@@ -8,8 +8,6 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
     passwordConfirm: ''
   };
 
-  vm.error = '';
-
   vm.login = function() {
     $meteor.loginWithPassword(vm.userCredentials.username, vm.userCredentials.password).then(
       function() {
@@ -17,8 +15,7 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
         $state.go('home');
       },
       function(err) {
-        failedLoginToast();
-        vm.error = 'Login error - ' + err;
+        failedLoginToast(err);
       }
     );
   };
@@ -45,7 +42,7 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
   // 1) Confirms that the password and confirmed passwords are identical
   vm.createUser = function() {
     if (vm.userCredentials.passwordConfirm !== vm.userCredentials.password) { // they do not match
-      console.log("passwords do not match"); //prompt the user
+      passwordsMismatchToast(); //prompt the user
     } else {
       Accounts.createUser({ // adds a user object to the Accounts.Users with create
         password: vm.userCredentials.passwordConfirm, // pulls from ng model for users password
@@ -96,10 +93,10 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
     last = angular.extend({}, current);
   }
 
-  failedLoginToast = function() {
+  failedLoginToast = function(err) {
     $mdToast.show(
       $mdToast.simple()
-      .textContent('Login Failed.')
+      .textContent('Login Failed. Login error - ' + err)
       .position(getToastPosition())
       .hideDelay(3000)
     );
@@ -111,6 +108,15 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
       .textContent('Login Successful. Welcome, ' + vm.userCredentials.username)
       .position(getToastPosition())
       .hideDelay(3000)
+    );
+  };
+
+  passwordsMismatchToast = function() {
+    $mdToast.show(
+      $mdToast.simple()
+      .textContent('Passwords don\'t match, essai.')
+      .position(getToastPosition())
+      .hideDelay(5000)
     );
   };
 }]);
