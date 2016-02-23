@@ -116,7 +116,7 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
       $mdToast.simple()
       .textContent('Passwords don\'t match, essai.')
       .position(getToastPosition())
-      .hideDelay(5000)
+      .hideDelay(2000)
     );
   };
 }]);

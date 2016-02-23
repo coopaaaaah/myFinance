@@ -3,11 +3,17 @@
 .my-color-pallet {
 
   color1: #818285;
-  color2: #e86100;
+  color2: #01597b;
   color3: #0091EA;
   color4: #ffffff;
   color5: #000000;
 
+}
+
+.my-white-container {
+  background-color:#ffffff;
+  opactiy:0.9;
+  padding: 5px;
 }
 
 .my-login-background {
@@ -18,14 +24,15 @@
 }
 
 .my-home-background {
-  background-color:#006064;
+  background-color:#01597b;
 }
 
 .my-white-text {
   color: #ffffff;
 }
+
 .my-menu-text {
-  font-size: 250%;
+  font-size: 200%;
   color: #ffffff;
   background-color: #4C4D52;
 }
