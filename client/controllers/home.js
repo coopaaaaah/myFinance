@@ -15,9 +15,22 @@ angular.module('myFinance').controller('homeCtrl', function($scope, $state, $mdS
   // *************************
 
   // Operate Side Nav on Home page
-  $scope.openLeftMenu = function() {
+  hm.openLeftMenu = function() {
     $mdSidenav('left').toggle();
   };
+
+  hm.showIncomePage = function() {
+    $state.go('home');
+  };
+
+  hm.showIncomePage = function() {
+    $state.go('income');
+  };
+
+  hm.showExpensePage = function() {
+    $state.go('expense');
+  };
+
 
   // *************************
   // END--Helper Functions Block

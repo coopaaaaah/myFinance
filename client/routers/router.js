@@ -28,7 +28,18 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
       }
     }
   })
-
+  .state('income', {
+  url: '/income',
+  templateUrl: 'client/templates/incomes.ng.html',
+  controller: 'incomeCtrl',
+  controllerAs: 'ic'
+})
+.state('expense', {
+    url: '/expense',
+    templateUrl: 'client/templates/expenses.ng.html',
+    controller: 'expenseCtrl',
+    controllerAs: 'ec'
+  })
   // 404 redirect
   .state('404', {
     url: '/404',

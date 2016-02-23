@@ -10,12 +10,26 @@
     </md-content>
   </md-sidenav>
 
-  <md-button class="md-primary md-hue-1" ng-click="openLeftMenu()" aria-label="menuBtn">
-    <span><img src="/images/my-menu-icon-1.png"></span>
-  </md-button>
+  <div class="sidebar" layout="column" layout-align="center center">
+    <md-button class="md-primary md-hue-1" ng-click="hc.showHomePage()" aria-label="savingsBtn">
+      <img src="/images/home-menu-icon.png">
+    </md-button>
+    <md-button class="md-primary md-hue-1" ng-click="hc.showIncomePage()" aria-label="savingsBtn">
+      <img src="/images/savings-menu-icon.png">
+    </md-button>
+    <md-button class="md-primary md-hue-1" ng-click="hc.showExpensePage()" aria-label="expensesBtn">
+      <img src="/images/expenses-menu-icon.png">
+    </md-button>
+    <md-button class="md-primary md-hue-1" ng-click="hc.openLeftMenu()" aria-label="optionsBtn">
+      <img src="/images/options-menu-icon.png">
+    </md-button>
+  </div>
 
-  <div class = "my-white-container" layout="row" layout-align="start none" flex=95>
-    <span> This is a test. </span>
+  <div class="my-white-container" layout="row" layout-align="start none" flex=95>
+    <span ng-show="home">
+      This is a test. A dashboard should be here.
+    </span>
+
   </div>
 
 </div>
