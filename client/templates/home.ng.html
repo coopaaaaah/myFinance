@@ -1,30 +1,39 @@
-<div layout-fill layout="column">
-
-  <md-fab-toolbar md-open="toolbar.isOpen" count="toolbar.count" md-direction="toolbar.selectedDirection">
-    <md-fab-trigger class="align-with-text">
-      <md-button aria-label="settings" class="md-fab md-primary">
+<div ng-cloak>
+  <md-content>
+    <md-toolbar>
+    <div class="md-toolbar-tools">
+        <h3>
+          <span>MyFi App</span>
+        </h3>
+        <span flex></span>
+      <md-button aria-label="settings" class="md-icon-button">
         <md-icon md-svg-src="images/ic_settings_white_24px.svg"></md-icon>
       </md-button>
-    </md-fab-trigger>
-    <md-toolbar layout="start" layout-align="space-between none">
-      <md-fab-actions class="md-toolbar-tools">
-        <md-button aria-label="home" ng-click="hc.goHome()" class="md-icon-button">
-          <md-icon md-svg-src="images/ic_home_white_24px.svg"></md-icon>
-        </md-button>
-        <md-button aria-label="atm" ng-click="hc.goIncome()" class="md-icon-button">
-          <md-icon md-svg-src="images/ic_local_atm_white_24px.svg"></md-icon>
-        </md-button>
-        <md-button aria-label="balance" ng-click="hc.goExpense()" class="md-icon-button">
-          <md-icon md-svg-src="images/ic_account_balance_white_24px.svg"></md-icon>
-        </md-button>
+      <md-button aria-label="logout" ng-click="hc.goLogout()" class="md-icon-button">
+        <md-icon md-svg-src="images/ic_backspace_white_24px.svg"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Dashboard">
+        <md-content class="md-padding">
+          Dasbhoard/Home Placeholder
+        </md-content>
+      </md-tab>
+      <md-tab label="Incomes">
+        <md-content class="md-padding">
+          Income Placeholder.
+        </md-content>
+      </md-tab>
+      <md-tab label="Expenses">
+        <md-content class="md-padding">
+          Expense Placeholder
+        </md-content>
+      </md-tab>
+    </md-tabs>
 
-        <md-button aria-label="logout" ng-click="hc.goLogout()" class="md-icon-button">
-          <md-icon md-svg-src="images/ic_power_settings_new_white_24px.svg"></md-icon>
-        </md-button>
-
-      </md-fab-actions>
-    </md-toolbar>
-  </md-fab-toolbar>
-
-  <div class="md-padding"> Home page. Dashboard.</div>
+    <md-button aria-label="logout" ng-click="hc.goLogout()" class="md-icon-button">
+      <md-icon md-svg-src="images/ic_power_settings_new_white_24px.svg"></md-icon>
+    </md-button>
+  </md-content>
 </div>

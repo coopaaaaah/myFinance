@@ -5,7 +5,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
   $stateProvider
 
     // this is the login page route
-    .state('login', {
+    .state('/login', {
     url: '/login',
     templateUrl: 'client/templates/login.ng.html',
     controller: 'loginCtrl',
@@ -17,16 +17,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     url: '/home/'+ Meteor.userId(),
     templateUrl: 'client/templates/home.ng.html',
     controller: 'homeCtrl',
-    controllerAs: 'hc',
-    resolve: {
-      currentUser: ($q) => {
-        if (Meteor.userId() === null) {
-          return $q.reject('AUTH_REQUIRED');
-        } else {
-          return $q.resolve();
-        }
-      }
-    }
+    controllerAs: 'hc'
   })
 
   // income page redirect
@@ -34,16 +25,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
   url: '/income/' + Meteor.userId(),
   templateUrl: 'client/templates/incomes.ng.html',
   controller: 'incomeCtrl',
-  controllerAs: 'ic',
-  resolve: {
-    currentUser: ($q) => {
-      if (Meteor.userId() === null) {
-        return $q.reject('AUTH_REQUIRED');
-      } else {
-        return $q.resolve();
-      }
-    }
-  }
+  controllerAs: 'ic'
 })
 
 // expense state redirect
@@ -51,16 +33,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     url: '/expense/' + Meteor.userId(),
     templateUrl: 'client/templates/expenses.ng.html',
     controller: 'expenseCtrl',
-    controllerAs: 'ec',
-    resolve: {
-      currentUser: ($q) => {
-        if (Meteor.userId() === null) {
-          return $q.reject('AUTH_REQUIRED');
-        } else {
-          return $q.resolve();
-        }
-      }
-    }
+    controllerAs: 'ec'
   })
 
   // 404 redirect
@@ -82,7 +55,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     }
   });
 
-  $urlRouterProvider.otherwise("/login");
+  $urlRouterProvider.otherwise("/404");
 
 })
 
