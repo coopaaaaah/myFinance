@@ -14,7 +14,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
 
   // this is the home page route
   .state('home', {
-    url: '/home',
+    url: '/home/'+ Meteor.userId(),
     templateUrl: 'client/templates/home.ng.html',
     controller: 'homeCtrl',
     controllerAs: 'hc',
@@ -31,18 +31,36 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
 
   // income page redirect
   .state('income', {
-  url: '/income',
+  url: '/income/' + Meteor.userId(),
   templateUrl: 'client/templates/incomes.ng.html',
   controller: 'incomeCtrl',
-  controllerAs: 'ic'
+  controllerAs: 'ic',
+  resolve: {
+    currentUser: ($q) => {
+      if (Meteor.userId() === null) {
+        return $q.reject('AUTH_REQUIRED');
+      } else {
+        return $q.resolve();
+      }
+    }
+  }
 })
 
 // expense state redirect
 .state('expense', {
-    url: '/expense',
+    url: '/expense/' + Meteor.userId(),
     templateUrl: 'client/templates/expenses.ng.html',
     controller: 'expenseCtrl',
-    controllerAs: 'ec'
+    controllerAs: 'ec',
+    resolve: {
+      currentUser: ($q) => {
+        if (Meteor.userId() === null) {
+          return $q.reject('AUTH_REQUIRED');
+        } else {
+          return $q.resolve();
+        }
+      }
+    }
   })
 
   // 404 redirect

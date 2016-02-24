@@ -1,7 +1,7 @@
-angular.module('myFinance').controller('homeCtrl', function($scope, $state, $mdSidenav) {
+angular.module('myFinance').controller('homeCtrl', function($scope, $state, $stateParams, $mdSidenav) {
 
   var hm = this;
-
+  hm.userId = $stateParams.userId;
 
   // *************************
   // START--Helper Functions Block
@@ -19,7 +19,7 @@ angular.module('myFinance').controller('homeCtrl', function($scope, $state, $mdS
     $state.go('home');
   };
 
-  hm.showIncomeIncome = function() {
+  hm.goIncome = function() {
     $state.go('income');
   };
 
