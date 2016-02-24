@@ -1,35 +1,30 @@
-<div class="my-home-background" layout-fill layout="row">
-  <md-sidenav class="md-sidenav-left" md-component-id="left">
-    <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">Sidenav Left</h1>
+<div layout-fill layout="column">
+
+  <md-fab-toolbar md-open="toolbar.isOpen" count="toolbar.count" md-direction="toolbar.selectedDirection">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="settings" class="md-fab md-primary">
+        <md-icon md-svg-src="images/ic_settings_white_24px.svg"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-toolbar layout="start" layout-align="space-between none">
+      <md-fab-actions class="md-toolbar-tools">
+        <md-button aria-label="home" ng-click="hc.goHome()" class="md-icon-button">
+          <md-icon md-svg-src="images/ic_home_white_24px.svg"></md-icon>
+        </md-button>
+        <md-button aria-label="atm" ng-click="hc.goIncome()" class="md-icon-button">
+          <md-icon md-svg-src="images/ic_local_atm_white_24px.svg"></md-icon>
+        </md-button>
+        <md-button aria-label="balance" ng-click="hc.goExpense()" class="md-icon-button">
+          <md-icon md-svg-src="images/ic_account_balance_white_24px.svg"></md-icon>
+        </md-button>
+
+        <md-button aria-label="logout" ng-click="hc.goLogout()" class="md-icon-button">
+          <md-icon md-svg-src="images/ic_power_settings_new_white_24px.svg"></md-icon>
+        </md-button>
+
+      </md-fab-actions>
     </md-toolbar>
-    <md-content layout="column" layout-align="center center">
-      <md-button ng-click="hc.goAbout()">About</md-button>
-      <md-divider></md-divider>
-      <md-button ng-click="hc.goLogout()">Logout</md-button>
-    </md-content>
-  </md-sidenav>
+  </md-fab-toolbar>
 
-  <div class="sidebar" layout="column" layout-align="center center">
-    <md-button class="md-primary md-hue-1" ng-click="hc.showHomePage()" aria-label="savingsBtn">
-      <img src="/images/home-menu-icon.png">
-    </md-button>
-    <md-button class="md-primary md-hue-1" ng-click="hc.showIncomePage()" aria-label="savingsBtn">
-      <img src="/images/savings-menu-icon.png">
-    </md-button>
-    <md-button class="md-primary md-hue-1" ng-click="hc.showExpensePage()" aria-label="expensesBtn">
-      <img src="/images/expenses-menu-icon.png">
-    </md-button>
-    <md-button class="md-primary md-hue-1" ng-click="hc.openLeftMenu()" aria-label="optionsBtn">
-      <img src="/images/options-menu-icon.png">
-    </md-button>
-  </div>
-
-  <div class="my-white-container" layout="row" layout-align="start none" flex=95>
-    <span ng-show="home">
-      This is a test. A dashboard should be here.
-    </span>
-
-  </div>
-
+  <div class="md-padding"> Home page. Dashboard.</div>
 </div>

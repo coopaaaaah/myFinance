@@ -2,35 +2,34 @@ angular.module('myFinance').controller('homeCtrl', function($scope, $state, $mdS
 
   var hm = this;
 
-  // menu button controls
-  hm.goAbout = function() {
-    $state.go('about');
-  };
-  hm.goLogout = function() {
-    $state.go('logout');
-  };
 
   // *************************
   // START--Helper Functions Block
   // *************************
 
-  // Operate Side Nav on Home page
-  hm.openLeftMenu = function() {
-    $mdSidenav('left').toggle();
+  // Operate nav-bar on Home page
+  $scope.isOpen = false;
+  $scope.toolbar = {
+    isOpen: false,
+    count: 0,
+    selectedDirection: 'left'
   };
 
-  hm.showIncomePage = function() {
+  hm.goHome = function() {
     $state.go('home');
   };
 
-  hm.showIncomePage = function() {
+  hm.showIncomeIncome = function() {
     $state.go('income');
   };
 
-  hm.showExpensePage = function() {
+  hm.goExpense = function() {
     $state.go('expense');
   };
 
+  hm.goLogout = function() {
+    $state.go('logout');
+  };
 
   // *************************
   // END--Helper Functions Block
