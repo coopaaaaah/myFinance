@@ -12,7 +12,3 @@ Meteor.startup(function() {
     console.log('No user detected in app. Created guest user for trial.');
   }
 });
-
-Meteor.publish("users", function(){
-  return Meteor.find();
-});

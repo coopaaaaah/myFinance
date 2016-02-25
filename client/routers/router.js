@@ -5,7 +5,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
   $stateProvider
 
     // this is the login page route
-    .state('/login', {
+    .state('login', {
     url: '/login',
     templateUrl: 'client/templates/login.ng.html',
     controller: 'loginCtrl',
@@ -14,7 +14,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
 
   // this is the home page route
   .state('home', {
-    url: '/home/'+ Meteor.userId(),
+    url: '/home/' + Meteor.userId(),
     templateUrl: 'client/templates/home.ng.html',
     controller: 'homeCtrl',
     controllerAs: 'hc'
@@ -36,12 +36,6 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     controllerAs: 'ec'
   })
 
-  // 404 redirect
-  .state('404', {
-    url: '/404',
-    templateUrl: 'client/templates/404.ng.html'
-  })
-
   .state('logout', {
     url: '/logout',
     resolve: {
@@ -55,7 +49,7 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     }
   });
 
-  $urlRouterProvider.otherwise("/404");
+  $urlRouterProvider.otherwise("login");
 
 })
 
