@@ -20,22 +20,6 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     controllerAs: 'hc'
   })
 
-  // income page redirect
-  .state('income', {
-  url: '/income/' + Meteor.userId(),
-  templateUrl: 'client/templates/incomes.ng.html',
-  controller: 'incomeCtrl',
-  controllerAs: 'ic'
-})
-
-// expense state redirect
-.state('expense', {
-    url: '/expense/' + Meteor.userId(),
-    templateUrl: 'client/templates/expenses.ng.html',
-    controller: 'expenseCtrl',
-    controllerAs: 'ec'
-  })
-
   .state('logout', {
     url: '/logout',
     resolve: {

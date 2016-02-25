@@ -1,0 +1,14 @@
+<form>
+  <label>Income Name: </label>
+  <input type="text" ng-model="incomesList.newIncome.name" />
+  <label>Description: </label>
+  <input type="text" ng-model="incomesList.newIncome.description" />
+  <button ng-click="incomesList.addIncome()">Add Income!</button>
+</form>
+<ul>
+  <li ui-sref="incomeDetails({ incomeId: income._id })" ng-repeat="income in incomesList.incomes">
+    {{income.name}}
+    <p>{{income.description}}</p>
+    <button ng-click="incomesList.removeIncome(income)">X</button>
+  </li>
+</ul>

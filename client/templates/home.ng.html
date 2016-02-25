@@ -6,9 +6,6 @@
           <span>MyFi App</span>
         </h3>
         <span flex></span>
-      <md-button aria-label="settings" class="md-icon-button">
-        <md-icon md-svg-src="images/ic_settings_white_24px.svg"></md-icon>
-      </md-button>
       <md-button aria-label="logout" ng-click="hc.goLogout()" class="md-icon-button">
         <md-icon md-svg-src="images/ic_backspace_white_24px.svg"></md-icon>
       </md-button>
@@ -23,11 +20,15 @@
       <md-tab label="Incomes">
         <md-content class="md-padding">
           Income Placeholder.
+          <incomes-list></incomes-list>
+          <incomes-details></incomes-details>
         </md-content>
       </md-tab>
       <md-tab label="Expenses">
         <md-content class="md-padding">
-          Expense Placeholder
+          Expense Placeholder.
+          <expenses-list></expenses-list>
+          <expenses-details></expenses-details>
         </md-content>
       </md-tab>
     </md-tabs>
