@@ -1,14 +1,18 @@
 <form>
+  <md-input-container>
   <label>Expense Name: </label>
-  <input type="text" ng-model="expensesList.newExpense.name" />
+  <input type="text" aria-label="expense-name" ng-model="expensesList.newExpense.name" />
+</md-input-container>
+<md-input-container>
   <label>Description: </label>
-  <input type="text" ng-model="expensesList.newExpense.description" />
-  <button ng-click="expensesList.addExpense()">Add Expense!</button>
+  <input type="text" aria-label="expense-description" ng-model="expensesList.newExpense.description" />
+</md-input-container>
+  <md-button class="md-raised md-primary" ng-click="expensesList.addExpense()">Add Expense!</md-button>
 </form>
 <ul>
   <li ui-sref="expenseDetails({ expenseId: expense._id })" ng-repeat="expense in expensesList.expenses">
     {{expense.name}}
     <p>{{expense.description}}</p>
-    <button ng-click="expensesList.removeExpense(expense)">X</button>
+    <md-button class="md-raised md-primary" ng-click="expensesList.removeExpense(expense)">X</md-button>
   </li>
 </ul>
