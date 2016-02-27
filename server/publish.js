@@ -1,12 +1,12 @@
 
 Meteor.publish("users", function(){
-  return Meteor.find();
+  return Meteor.users.find();
 });
 
 Meteor.publish("incomes", function(){
-  return Meteor.find();
+  return Meteor.incomes.find();
 });
 
 Meteor.publish("expenses", function(){
-  return Meteor.find();
+  return Meteor.expenses.find();
 });

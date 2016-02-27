@@ -7,6 +7,7 @@ angular.module('myFinance').directive('incomesList', function() {
      $reactive(this).attach($scope);
 
      this.newIncome = {};
+     this.subscribe('incomes');
 
      this.helpers({
        incomes: () => {
@@ -15,6 +16,7 @@ angular.module('myFinance').directive('incomesList', function() {
      });
 
      this.addIncome = () => {
+      this.newIncome.owner = Meteor.user()._id;
        Incomes.insert(this.newIncome);
        this.newIncome = {};
      };

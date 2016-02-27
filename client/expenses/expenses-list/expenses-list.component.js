@@ -7,6 +7,7 @@ angular.module('myFinance').directive('expensesList', function() {
      $reactive(this).attach($scope);
 
      this.newExpense = {};
+     this.subscribe('expenses');
 
      this.helpers({
        expenses: () => {
@@ -15,6 +16,7 @@ angular.module('myFinance').directive('expensesList', function() {
      });
 
      this.addExpense = () => {
+      this.newExpense.owner = Meteor.user()._id;
        Expenses.insert(this.newExpense);
        this.newExpense = {};
      };

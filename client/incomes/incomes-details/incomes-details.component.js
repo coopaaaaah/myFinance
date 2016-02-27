@@ -6,8 +6,10 @@ angular.module('myFinance').directive('incomesDetails', function () {
     controller: function ($scope, $stateParams, $reactive) {
       $reactive(this).attach($scope);
 
+      this.subscribe('incomes');
+
       this.helpers({
-        income: () => {
+        incomes: () => {
           return Incomes.findOne({_id: $stateParams.incomeId});
         }
       });

@@ -24,7 +24,9 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
     url: '/logout',
     resolve: {
       "logout": ['$meteor', '$state', function($meteor, $state) {
+        var meteorUserId = Meteor.userId();
         return $meteor.logout().then(function() {
+          console.log(meteorUserId + " logged out.");
           $state.go('login');
         }, function(err) {
           console.log('logout error - ', err);
