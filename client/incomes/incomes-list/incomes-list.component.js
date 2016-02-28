@@ -1,29 +1,30 @@
 angular.module('myFinance').directive('incomesList', function() {
   return {
-   restrict: 'E',
-   templateUrl: 'client/incomes/incomes-list/incomes-list.html',
-   controllerAs: 'incomesList',
-   controller: function ($scope, $reactive) {
-     $reactive(this).attach($scope);
+    restrict: 'E',
+    templateUrl: 'client/incomes/incomes-list/incomes-list.html',
+    controllerAs: 'incomesList',
+    controller: function($scope, $reactive) {
+      $reactive(this).attach($scope);
 
-     this.newIncome = {};
-     this.subscribe('incomes');
+      this.newIncome = {};
 
-     this.helpers({
-       incomes: () => {
-         return Incomes.find({});
-       }
-     });
+        this.relevantId = 10;
 
-     this.addIncome = () => {
-      this.newIncome.owner = Meteor.user()._id;
-       Incomes.insert(this.newIncome);
-       this.newIncome = {};
-     };
+        this.subscribe('incomes');
 
-     this.removeIncome = (income) => {
-       Incomes.remove({_id: income._id});
-     };
-   }
- };
+        this.relevantId = 50; // This will cause the subscribe arguments method to run again
+
+      this.addIncome = () => {
+        this.newIncome.owner = Meteor.user()._id;
+        Incomes.insert(this.newIncome);
+        this.newIncome = {};
+      };
+
+      this.removeIncome = (income) => {
+        Incomes.remove({
+          _id: income._id
+        });
+      };
+    }
+  };
 });

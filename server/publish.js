@@ -4,9 +4,9 @@ Meteor.publish("users", function(){
 });
 
 Meteor.publish("incomes", function(){
-  return Meteor.incomes.find();
+  return Incomes.find();
 });
 
 Meteor.publish("expenses", function(){
-  return Meteor.expenses.find();
+  return Expenses.find();
 });
