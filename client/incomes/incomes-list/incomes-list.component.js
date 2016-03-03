@@ -7,12 +7,19 @@ angular.module('myFinance').directive('incomesList', function() {
       $reactive(this).attach($scope);
 
       this.newIncome = {};
+      $scope.incomes = {};
 
-        this.relevantId = 10;
+      this.subscribe('incomes');
 
-        this.subscribe('incomes');
-
-        this.relevantId = 50; // This will cause the subscribe arguments method to run again
+      Meteor.call('getIncomesData', function(err, data) {
+        if (!err) {
+          console.log(data);
+          $scope.incomes = data;
+          console.log($scope.incomes);
+        } else {
+          console.log("error");
+        }
+      });
 
       this.addIncome = () => {
         this.newIncome.owner = Meteor.user()._id;

@@ -7,8 +7,17 @@ angular.module('myFinance').directive('expensesList', function() {
       $reactive(this).attach($scope);
 
       this.newExpense = {};
+      $scope.expenses = {};
 
       this.subscribe('expenses');
+
+      Meteor.call('getExpenseData',function (err, data) {
+        if (!err) {
+          $scope.expenses = {};
+        } else {
+          console.log("error");
+        }
+      });
 
       this.addExpense = () => {
         this.newExpense.owner = Meteor.user()._id;

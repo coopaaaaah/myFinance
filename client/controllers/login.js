@@ -1,6 +1,7 @@
 angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$state', '$mdToast', function($meteor, $scope, $state, $mdToast) {
 
   var vm = this;
+  var meteorUserId;
 
   vm.userCredentials = {
     username: '',
@@ -12,6 +13,7 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
     $meteor.loginWithPassword(vm.userCredentials.username, vm.userCredentials.password).then(
       function() {
         successfulLoginToast();
+        meteorUserId = Meteor.userId();
         $state.go('home');
       },
       function(err) {
@@ -53,6 +55,7 @@ angular.module('myFinance').controller('loginCtrl', ['$meteor', '$scope', '$stat
           console.log(error);
         } else { // if there is no error an email will be sent to the user
           console.log("Added user to Meteor Account");
+          meteorUserId = Meteor.userId();
           $state.go('home'); // immediate redirect for the user after successfully registering or are we waiting for email verification ?
         }
       });

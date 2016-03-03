@@ -10,7 +10,7 @@
   <md-button class="md-raised md-primary" ng-click="incomesList.addIncome()">Add Income!</md-button>
 </form>
 <ul>
-  <li ui-sref="incomeDetails({ incomeId: income._id })" ng-repeat="income in incomesList.incomes">
+  <li ng-repeat="income in incomesList.incomes">
     {{income.name}}
     <p>{{income.description}}</p>
     <md-button class="md-raised md-primary" ng-click="incomesList.removeIncome(income)">X</md-button>
