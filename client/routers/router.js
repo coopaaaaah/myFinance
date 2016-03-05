@@ -14,10 +14,20 @@ angular.module('myFinance').config(function($urlRouterProvider, $stateProvider, 
 
   // this is the home page route
   .state('home', {
-    url: '/home/' + Meteor.userId(),
+    url: '/home/:financeId' + Meteor.userId(),
     templateUrl: 'client/templates/home.ng.html',
     controller: 'homeCtrl',
-    controllerAs: 'hc'
+    controllerAs: 'hc',
+        resolve: {
+          currentUser: ($q) => {
+            if (Meteor.userId() == null) {
+              return $q.reject('AUTH_REQUIRED');
+            }
+            else {
+              return $q.resolve();
+            }
+          }
+        }
   })
 
   .state('logout', {

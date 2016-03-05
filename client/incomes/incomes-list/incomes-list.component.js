@@ -3,24 +3,25 @@ angular.module('myFinance').directive('incomesList', function() {
     restrict: 'E',
     templateUrl: 'client/incomes/incomes-list/incomes-list.html',
     controllerAs: 'incomesList',
-    controller: function($scope, $reactive) {
+    controller: function($scope, $reactive, $stateParams) {
       $reactive(this).attach($scope);
 
       this.newIncome = {};
-      $scope.incomes = {};
+      this.sort = {
+        name: 1
+      };
 
-      this.subscribe('incomes');
-
-      Meteor.call('getIncomesData', function(err, data) {
-        if (!err) {
-          console.log(data);
-          $scope.incomes = data;
-          console.log($scope.incomes);
-        } else {
-          console.log("error");
+      this.helpers({
+        incomes: () => {
+          return Incomes.find({}, { sort : this.getReactively('sort') });
         }
       });
 
+      this.subscribe('expenses', () => {
+        return [{
+          sort: this.getReactively('sort')
+        }];
+      });
       this.addIncome = () => {
         this.newIncome.owner = Meteor.user()._id;
         Incomes.insert(this.newIncome);

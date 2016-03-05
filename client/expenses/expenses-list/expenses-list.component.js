@@ -3,20 +3,24 @@ angular.module('myFinance').directive('expensesList', function() {
     restrict: 'E',
     templateUrl: 'client/expenses/expenses-list/expenses-list.html',
     controllerAs: 'expensesList',
-    controller: function($scope, $reactive) {
+    controller: function($scope, $reactive, $stateParams) {
       $reactive(this).attach($scope);
 
       this.newExpense = {};
-      $scope.expenses = {};
+      this.sort = {
+        name: 1
+      };
 
-      this.subscribe('expenses');
-
-      Meteor.call('getExpenseData',function (err, data) {
-        if (!err) {
-          $scope.expenses = {};
-        } else {
-          console.log("error");
+      this.helpers({
+        expenses: () => {
+          return Expenses.find({}, { sort : this.getReactively('sort') });
         }
+      });
+
+      this.subscribe('expenses', () => {
+        return [{
+          sort: this.getReactively('sort')
+        }];
       });
 
       this.addExpense = () => {

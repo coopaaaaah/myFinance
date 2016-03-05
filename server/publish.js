@@ -1,18 +1,12 @@
 
 Meteor.publish("users", function(){
-  return Meteor.users.find();
+  return Meteor.users.find({});
 });
 
-Meteor.methods({
-getExpenseData: function () {
- var data = Expenses.find({}).fetch();
- return data;
-}
+Meteor.publish("Expenses", function(){
+  return Expenses.find({owner: this.userId});
 });
 
-Meteor.methods({
-getIncomesData: function () {
- var data = Incomes.find({}).fetch();
- return data;
-}
+Meteor.publish("Incomes", function(){
+  return Incomes.find({owner: this.userId});
 });

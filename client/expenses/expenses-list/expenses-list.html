@@ -10,6 +10,7 @@
   <md-button class="md-raised md-primary" ng-click="expensesList.addExpense()">Add Expense!</md-button>
 </form>
 <ul>
+  {{expensesList.expenses}}
   <li ng-repeat="expense in expensesList.expenses">
     {{expense.name}}
     <p>{{expense.description}}</p>
