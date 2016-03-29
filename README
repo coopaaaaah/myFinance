@@ -3,10 +3,3 @@ This is as basic financial application that will help my budget my income and ex
 This application will be built using a angular-meteor foundation. http://www.angular-meteor.com/
 
 Angular-Material will be used to help style the app. https://material.angularjs.org/latest/
-
-I will try* work on this application every day.
-
-Edit 1 :
-  Need to start adding user features; Create User Stories for :
-    Tracking Expenses
-    Tracking Income
